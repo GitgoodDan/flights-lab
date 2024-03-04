@@ -24,21 +24,22 @@ function newForm(req, res) {
     res.render('flights/new');
   };
 
-  function create(req, res) {
+  async function create(req, res) {
     const airline = req.body.airline;
     const airport = req.body.airport;
     const flightNo = req.body.flightNo;
     const departs = req.body.departs;
-  
-    Flight.create({ airline, airport, flightNo, departs }, function(err, newFlight) {
-        if (err) {
-          console.error(err);
-          res.status(500).send('Internal Server Error');
-        } else {
-          res.redirect('/flights');
-        }
-      });
+    
+    try {
+        await Flight.create(req.body);
+        res.redirect('/flights');
+    } catch (err) {
+        console.log(err);
+        res.render('flights/new', { errorMsg: err.message });
     }
+}
+
+  
 
 
     async function addDes(req, res) {

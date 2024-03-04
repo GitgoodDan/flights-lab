@@ -5,7 +5,6 @@
         <li><strong>Airline:</strong> <%= flight.airline %></li>
         <li><strong>Airport:</strong> <%= flight.airport %></li>
         <li><strong>Flight No.:</strong> <%= flight.flightNo %></li>
-        <li><strong>Departure:</strong> <%= formatDate(flight.departs) %></li>
     </ul>
     <a href="/flights">Back to All Flights</a>
 
@@ -28,7 +27,7 @@
     <h2>Destinations</h2>
     <ul>
         <% flight.destinations.forEach(function(destination) { %>
-            <li>Airport: <%= destination.airport %>, Arrival: <%= formatDate(destination.arrival) %></li>
+            <li>Airport: <%= destination.airport %></li>
         <% }); %>
     </ul>
     
